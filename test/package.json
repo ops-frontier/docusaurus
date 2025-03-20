@@ -1,6 +1,6 @@
 {
     "name": "test",
-    "version": "1.0.2-rc.3",
+    "version": "1.0.2",
     "description": "Test site.",
     "scripts": {
         "build": "../packages/docusaurus/ops-frontier-docusaurus.mjs build --out-dir $(pwd)/build",

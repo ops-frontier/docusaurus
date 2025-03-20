@@ -1,5 +1,14 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.2
+
+### Patch Changes
+
+-   8a1edc1: initial commit
+-   23b1bbf: fix pubslish error
+-   a6974ca: test NODE_AUTH_TOKNE
+-   8a37438: Fix 404 error on publish
+
 ## 0.0.2-rc.3
 
 ### Patch Changes
