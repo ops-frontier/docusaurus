@@ -1,0 +1,6 @@
+{
+    "yaml.schemas": {
+        "/workspaces/ops-frontier-docusaurus/test/schemas/workflowDefinition.json": "*.wd.yml",
+        "/workspaces/ops-frontier-docusaurus/test/schemas/workflowStep.json": "*.step.yml"
+    }
+}

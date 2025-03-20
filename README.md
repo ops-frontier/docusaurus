@@ -1,2 +1,2 @@
-# docusaurus
-Markdown CMS Docusaurus customized for ops-frontier
+# ops-frontier-docusaurus
+Docusaurus template for Ops Frontier
