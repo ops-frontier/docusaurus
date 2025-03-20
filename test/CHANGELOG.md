@@ -1,5 +1,11 @@
 # test
 
+## 1.0.2-rc.2
+
+### Patch Changes
+
+-   Fix 404 error on publish
+
 ## 1.0.2-rc.1
 
 ### Patch Changes
