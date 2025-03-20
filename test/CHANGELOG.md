@@ -1,5 +1,11 @@
 # test
 
+## 1.0.2-rc.3
+
+### Patch Changes
+
+-   test NODE_AUTH_TOKNE
+
 ## 1.0.2-rc.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.2-rc.3
+
+### Patch Changes
+
+-   test NODE_AUTH_TOKNE
+
 ## 0.0.2-rc.2
 
 ### Patch Changes

@@ -36,4 +36,4 @@ jobs:
           npm install --no-audit --no-fund --ci
           npm publish --tag rc --workspace=packages/docusaurus
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # secrets名を変更
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # secrets名を変更
