@@ -19,19 +19,17 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-          # Defaults to the user or organization that owns the workflow file
-          scope: ${{ '@' }}${{ github.repository_owner }}
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Get version to be released
         id: get-version
         run: node -e "console.log('version=' + require('./package.json').version)" >> "$GITHUB_OUTPUT"
       - name: npm パッケージを公開
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> .npmrc
           npm install --no-audit --no-fund --ci
           npm publish --workspace=packages/docusaurus
         env:

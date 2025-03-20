@@ -1,5 +1,11 @@
 # test
 
+## 1.0.2-rc.1
+
+### Patch Changes
+
+-   fix pubslish error
+
 ## 1.0.2-rc.0
 
 ### Patch Changes

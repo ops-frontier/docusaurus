@@ -1,7 +1,10 @@
 {
     "name": "@ops-frontier/docusaurus",
-    "version": "0.0.2-rc.0",
+    "version": "0.0.2-rc.1",
     "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
     "author": "Mitsuru Nakakawaji <mitsuru@procube.jp>",
     "license": "MIT",
     "scripts": {

@@ -1,11 +1,11 @@
 {
-    "name": "@ops-frontier/docusaurus",
+    "name": "@ops-frontier/docusaurus-root",
     "version": "1.0.0",
     "description": "Docusaurus for Ops Frontier",
     "repository": "https://github.com/procube-sandbox/ops-frontier-docusaurus",
     "author": "Mitsuru Nakakawaji <mitsuru@procube.jp>",
     "license": "MIT",
-    "private": false,
+    "private": true,
     "workspaces": [
         "packages/*",
         "test"
