@@ -1,0 +1,39 @@
+name: Publish RC for Pull Request
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+  # packages: write  <- GitHub Packages は使用しないのでコメントアウト
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if changeset is in prerelease mode
+        id: check-in-pre
+        run: echo "pre=$(test -r .changeset/pre.json; echo $?)"  >> "$GITHUB_OUTPUT"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@ops-frontier'
+
+      - name: Publish npm package
+        if: ${{ steps.check-in-pre.outputs.pre == 0 }}
+        run: |
+          npm install --no-audit --no-fund --ci
+          npm publish --tag rc --workspace=packages/docusaurus
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # secrets名を変更
