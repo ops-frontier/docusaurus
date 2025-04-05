@@ -1,8 +1,66 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
-import simplePlantUML from "@akebifiky/remark-simple-plantuml";
-import unknownHandler from "./src/components/unknownHandler";
+import { themes as prismThemes } from "prism-react-renderer"
+import type { Config } from "@docusaurus/types"
+import type * as Preset from "@docusaurus/preset-classic"
+import type { NavbarItem } from "@docusaurus/theme-common"
+import simplePlantUML from "@akebifiky/remark-simple-plantuml"
+import unknownHandler from "./src/components/unknownHandler"
+import sidebars from "./sidebars"
+
+const originalItems: Array<NavbarItem> = [
+    {
+        type: "docSidebar",
+        sidebarId: "opsFrontier",
+        position: "left",
+        label: "Ops Frontier",
+    },
+    {
+        type: "docSidebar",
+        sidebarId: "devGuide",
+        position: "left",
+        label: "開発者ガイド",
+    },
+    {
+        type: "docSidebar",
+        sidebarId: "devDesign",
+        position: "left",
+        label: "設計書",
+    },
+    {
+        type: "docSidebar",
+        sidebarId: "devSpecification",
+        position: "left",
+        label: "仕様書/テスト項目書",
+    },
+    {
+        type: "docSidebar",
+        sidebarId: "adminGuide",
+        position: "left",
+        label: "管理者マニュアル",
+    },
+    {
+        type: "docSidebar",
+        sidebarId: "userGuide",
+        position: "left",
+        label: "利用者マニュアル",
+    },
+    {
+        href: "https://github.com/ops-frontier/repositories",
+        label: "GitHub",
+        position: "right",
+    },
+]
+
+// sidebars のキーのリストを取得
+const sidebarIds = Object.keys(sidebars)
+
+// sidebarId が sidebars に含まれるものだけをフィルタリング
+const filteredItems = originalItems.filter((item) => {
+    if (item.type === "docSidebar") {
+        return sidebarIds.includes(item.sidebarId)
+    }
+    return true // docSidebar 以外のアイテムはそのまま残す
+})
+
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -46,12 +104,7 @@ const config: Config = {
                 docs: {
                     path: process.env.OPS_FRONTIER_DOCS_PATH || "docs",
                     sidebarPath: "./sidebars.ts",
-                    remarkPlugins: [
-                        [
-                          simplePlantUML,
-                          { baseUrl: "https://www.plantuml.com/plantuml/svg" },
-                        ],
-                    ],
+                    remarkPlugins: [[simplePlantUML, { baseUrl: "https://www.plantuml.com/plantuml/svg" }]],
                 },
                 blog: false,
                 theme: {
@@ -70,43 +123,7 @@ const config: Config = {
                 alt: "Ops Frontier Logo",
                 src: "img/symbol_logo_4c.svg",
             },
-            items: [
-                {
-                    type: "docSidebar",
-                    sidebarId: "devGuide",
-                    position: "left",
-                    label: "開発者ガイド",
-                },
-                {
-                    type: "docSidebar",
-                    sidebarId: "devDesign",
-                    position: "left",
-                    label: "設計書",
-                },
-                // {
-                //     type: "docSidebar",
-                //     sidebarId: "devSpecification",
-                //     position: "left",
-                //     label: "仕様書/テスト項目書",
-                // },
-                // {
-                //     type: "docSidebar",
-                //     sidebarId: "adminGuide",
-                //     position: "left",
-                //     label: "管理者マニュアル",
-                // },
-                // {
-                //     type: "docSidebar",
-                //     sidebarId: "userGuide",
-                //     position: "left",
-                //     label: "利用者マニュアル",
-                // },
-                {
-                    href: "https://github.com/ops-frontier/repositories",
-                    label: "GitHub",
-                    position: "right",
-                },
-            ],
+            items: filteredItems,
         },
         prism: {
             theme: prismThemes.github,
@@ -115,4 +132,4 @@ const config: Config = {
     } satisfies Preset.ThemeConfig,
 }
 
-export default config;
+export default config

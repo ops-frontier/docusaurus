@@ -1,5 +1,11 @@
 # test
 
+## 1.0.3-rc.0
+
+### Patch Changes
+
+-   Fix: site directory
+
 ## 1.0.2
 
 ### Patch Changes

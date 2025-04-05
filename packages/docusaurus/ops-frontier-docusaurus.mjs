@@ -4,11 +4,13 @@ import { spawn } from "node:child_process"
 import { fileURLToPath } from "node:url"
 import { dirname, join } from "node:path"
 import { existsSync, mkdirSync } from "node:fs"
-import { createReadStream } from "node:fs"
-import { createWriteStream } from "node:fs"
-import { pipeline } from "node:stream/promises"
-import { createUnzip } from "node:zlib"
 import unzipper from "unzipper"
+import { inspect } from "node:util"
+import { logger } from "@docusaurus/logger"
+import { DOCUSAURUS_VERSION } from "@docusaurus/utils"
+import { runCLI } from "@docusaurus/core/lib/index.js"
+import beforeCli from "@docusaurus/core/bin/beforeCli.mjs"
+
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -21,42 +23,77 @@ if (!existsSync(process.env.OPS_FRONTIER_DOCS_PATH)) {
     console.error(`Error: ${process.env.OPS_FRONTIER_DOCS_PATH} does not exist.`)
     process.exit(1)
 }
+console.log(`INFO: Document path set to ${process.env.OPS_FRONTIER_DOCS_PATH}`)
 
 if (process.argv.length < 3) {
     console.error("Usage: ops-frontier-docusaurus <command> [options]")
     process.exit(1)
-} else if (process.argv[2] === "init") {
+} else {
     // Check if OPS_FRONTIER_DOCUSAURUS_PATH exists, create it and unzip if not
     if (!existsSync(OPS_FRONTIER_DOCUSAURUS_PATH)) {
-        console.log(`OPS_FRONTIER_DOCUSAURUS_PATH does not exist. Creating: ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
+        console.log(`Docusaurus directory does not exist. Creating: ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
         mkdirSync(OPS_FRONTIER_DOCUSAURUS_PATH, { recursive: true })
 
         const zipFilePath = join(__dirname, "ops-frontier-docusaurus.zip")
         if (existsSync(zipFilePath)) {
             console.log(`Unzipping ${zipFilePath} to ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
             try {
-                const directory = await unzipper.Open.file(zipFilePath);
+                const directory = await unzipper.Open.file(zipFilePath)
                 await directory.extract({ path: OPS_FRONTIER_DOCUSAURUS_PATH })
                 console.log(`Successfully unzipped ${zipFilePath} to ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
             } catch (error) {
                 console.error(`Error unzipping ${zipFilePath}:`, error)
                 process.exit(1)
             }
-            process.exit(0)
         } else {
             console.error(`Error: ${zipFilePath} not found.`)
             process.exit(1)
         }
     } else {
         console.log(
-            `${OPS_FRONTIER_DOCUSAURUS_PATH} already exists. Not unzipping. If you want to reinitialize, delete the directory and run the command again.`,
+            `INFO: ${OPS_FRONTIER_DOCUSAURUS_PATH} already exists. Not unzipping. If you want to reinitialize, delete the directory and run the command again.`,
         )
-        process.exit(1)
     }
 }
 
-const p = spawn("npx", ["docusaurus", ...process.argv.slice(2)], {
-    stdio: "inherit",
-    cwd: __dirname,
-})
-p.on("close", (code) => process.exit(code))
+const args = ["docusaurus", ...process.argv.slice(1)]
+// カレントディレクトリを OPS_FRONTIER_DOCUSAURUS_PATH に変更
+try {
+    process.chdir(OPS_FRONTIER_DOCUSAURUS_PATH)
+    console.log(`INFO: Current directory changed to ${process.cwd()} as docusaurus site root`)
+} catch (err) {
+    console.error(`Error: chdir: ${err}`)
+    process.exit(1)
+}
+
+// Env variables are initialized to dev, but can be overridden by each command
+// For example, "docusaurus build" overrides them to "production"
+// See also https://github.com/facebook/docusaurus/issues/8599
+process.env.BABEL_ENV ??= 'development';
+process.env.NODE_ENV ??= 'development';
+
+/**
+ * @param {unknown} error
+ */
+function handleError(error) {
+  console.log('');
+
+  // We need to use inspect with increased depth to log the full causal chain
+  // By default Node logging has depth=2
+  // see also https://github.com/nodejs/node/issues/51637
+  logger.error(inspect(error, {depth: Infinity}));
+
+  logger.info`Docusaurus version: number=${DOCUSAURUS_VERSION}
+Node version: number=${process.version}`;
+  process.exit(1);
+}
+
+process.on('unhandledRejection', handleError);
+
+try {
+  await beforeCli();
+  // @ts-expect-error: we know it has at least 2 args
+  await runCLI(args);
+} catch (e) {
+  handleError(e);
+}

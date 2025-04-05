@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.3-rc.0
+
+### Patch Changes
+
+-   Fix: site directory
+
 ## 0.0.2
 
 ### Patch Changes
