@@ -28,7 +28,7 @@ logger.info(`Document path set to ${process.env.OPS_FRONTIER_DOCS_PATH}`)
 if (process.argv.length < 3) {
     logger.error("Usage: ops-frontier-docusaurus <command> [options]")
     process.exit(1)
-} else if (process.argv[1] === "build" || process.argv[1] === "start") {
+} else if (process.argv[2] === "build" || process.argv[2] === "start") {
     // Check if OPS_FRONTIER_DOCUSAURUS_PATH exists, create it and unzip if not
     if (!existsSync(OPS_FRONTIER_DOCUSAURUS_PATH)) {
         logger.info(`Docusaurus directory does not exist. Creating: ${OPS_FRONTIER_DOCUSAURUS_PATH}`)

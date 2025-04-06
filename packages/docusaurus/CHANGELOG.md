@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.3-rc.2
+
+### Patch Changes
+
+-   Fix command index
+
 ## 0.0.3-rc.1
 
 ### Patch Changes
