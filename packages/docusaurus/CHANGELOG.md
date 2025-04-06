@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.3-rc.3
+
+### Patch Changes
+
+-   sidebar.ts use logger
+
 ## 0.0.3-rc.2
 
 ### Patch Changes

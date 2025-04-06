@@ -1,6 +1,7 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from "@docusaurus/plugin-content-docs"
 import { existsSync } from "node:fs"
 import path from "node:path"
+import { logger } from "@docusaurus/logger"
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -35,7 +36,7 @@ for (const key in sidebars) {
         if (existsSync(fullPath)) {
             filteredSidebars[key] = sidebar
         } else {
-            console.warn(`Directory ${fullPath} does not exist. Removing sidebar ${key}.`)
+            logger.warn(`Directory ${fullPath} does not exist. Removing sidebar ${key}.`)
         }
     } else {
         filteredSidebars[key] = sidebar
