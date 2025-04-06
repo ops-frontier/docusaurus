@@ -1,11 +1,11 @@
 {
     "name": "test",
-    "version": "1.0.3-rc.0",
+    "version": "1.0.3-rc.1",
     "description": "Test site.",
     "scripts": {
-        "build": "../packages/docusaurus/ops-frontier-docusaurus.mjs build --out-dir $(pwd)/build",
-        "clear": "../packages/docusaurus/ops-frontier-docusaurus.mjs clear",
-        "start": "../packages/docusaurus/ops-frontier-docusaurus.mjs start"
+        "build": "ops-frontier-docusaurus build --out-dir $(pwd)/build",
+        "clear": "ops-frontier-docusaurus clear && rm -rf build",
+        "start": "ops-frontier-docusaurus start"
     },
     "author": "Mitsuru Nakakawaji <mitsuru@procube.jp>",
     "license": "MIT",

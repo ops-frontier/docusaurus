@@ -1,0 +1,8 @@
+{
+    "label": "CI/CD",
+    "position": 40,
+    "link": {
+        "type": "generated-index",
+        "description": "CIとCDの実装方法に関するドキュメント"
+    }
+}

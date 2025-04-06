@@ -20,38 +20,38 @@ const OPS_FRONTIER_DOCUSAURUS_PATH = `${OPS_FRONTIER_PROJECT_ROOT}/.ops-frontier
 process.env.OPS_FRONTIER_DOCS_PATH = `${OPS_FRONTIER_PROJECT_ROOT}/docs`
 
 if (!existsSync(process.env.OPS_FRONTIER_DOCS_PATH)) {
-    console.error(`Error: ${process.env.OPS_FRONTIER_DOCS_PATH} does not exist.`)
+    logger.error(`Error: ${process.env.OPS_FRONTIER_DOCS_PATH} does not exist.`)
     process.exit(1)
 }
-console.log(`INFO: Document path set to ${process.env.OPS_FRONTIER_DOCS_PATH}`)
+logger.info(`Document path set to ${process.env.OPS_FRONTIER_DOCS_PATH}`)
 
 if (process.argv.length < 3) {
-    console.error("Usage: ops-frontier-docusaurus <command> [options]")
+    logger.error("Usage: ops-frontier-docusaurus <command> [options]")
     process.exit(1)
-} else {
+} else if (process.argv[1] === "build" || process.argv[1] === "start") {
     // Check if OPS_FRONTIER_DOCUSAURUS_PATH exists, create it and unzip if not
     if (!existsSync(OPS_FRONTIER_DOCUSAURUS_PATH)) {
-        console.log(`Docusaurus directory does not exist. Creating: ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
+        logger.info(`Docusaurus directory does not exist. Creating: ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
         mkdirSync(OPS_FRONTIER_DOCUSAURUS_PATH, { recursive: true })
 
         const zipFilePath = join(__dirname, "ops-frontier-docusaurus.zip")
         if (existsSync(zipFilePath)) {
-            console.log(`Unzipping ${zipFilePath} to ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
+            logger.info(`Unzipping ${zipFilePath} to ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
             try {
                 const directory = await unzipper.Open.file(zipFilePath)
                 await directory.extract({ path: OPS_FRONTIER_DOCUSAURUS_PATH })
-                console.log(`Successfully unzipped ${zipFilePath} to ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
+                logger.info(`Successfully unzipped ${zipFilePath} to ${OPS_FRONTIER_DOCUSAURUS_PATH}`)
             } catch (error) {
-                console.error(`Error unzipping ${zipFilePath}:`, error)
+                logger.error(`Error unzipping ${zipFilePath}:`, error)
                 process.exit(1)
             }
         } else {
-            console.error(`Error: ${zipFilePath} not found.`)
+            logger.error(`Error: ${zipFilePath} not found.`)
             process.exit(1)
         }
     } else {
-        console.log(
-            `INFO: ${OPS_FRONTIER_DOCUSAURUS_PATH} already exists. Not unzipping. If you want to reinitialize, delete the directory and run the command again.`,
+        logger.info(
+            `${OPS_FRONTIER_DOCUSAURUS_PATH} already exists. Not unzipping. If you want to reinitialize, delete the directory and run the command again.`,
         )
     }
 }
@@ -60,9 +60,9 @@ const args = ["docusaurus", ...process.argv.slice(1)]
 // カレントディレクトリを OPS_FRONTIER_DOCUSAURUS_PATH に変更
 try {
     process.chdir(OPS_FRONTIER_DOCUSAURUS_PATH)
-    console.log(`INFO: Current directory changed to ${process.cwd()} as docusaurus site root`)
+    logger.info(`Current directory changed to ${process.cwd()} as docusaurus site root`)
 } catch (err) {
-    console.error(`Error: chdir: ${err}`)
+    logger.error(`Error: chdir: ${err}`)
     process.exit(1)
 }
 
@@ -76,7 +76,7 @@ process.env.NODE_ENV ??= 'development';
  * @param {unknown} error
  */
 function handleError(error) {
-  console.log('');
+  logger.info('');
 
   // We need to use inspect with increased depth to log the full causal chain
   // By default Node logging has depth=2
