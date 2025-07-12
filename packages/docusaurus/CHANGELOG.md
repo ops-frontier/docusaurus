@@ -1,5 +1,38 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.3
+
+### Patch Changes
+
+-   e9f7363: sidebar.ts use logger
+-   c234dc8: Fix command index
+-   e6196f0: Fix: site directory
+-   42533ab: README.md を記述
+
+## 0.0.3-rc.3
+
+### Patch Changes
+
+-   sidebar.ts use logger
+
+## 0.0.3-rc.2
+
+### Patch Changes
+
+-   Fix command index
+
+## 0.0.3-rc.1
+
+### Patch Changes
+
+-   README.md を記述
+
+## 0.0.3-rc.0
+
+### Patch Changes
+
+-   Fix: site directory
+
 ## 0.0.2
 
 ### Patch Changes
