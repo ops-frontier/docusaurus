@@ -1,5 +1,12 @@
 # test
 
+## 1.0.3
+
+### Patch Changes
+
+-   e6196f0: Fix: site directory
+-   42533ab: README.md を記述
+
 ## 1.0.3-rc.1
 
 ### Patch Changes
