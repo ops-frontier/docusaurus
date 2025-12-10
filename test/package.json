@@ -1,6 +1,6 @@
 {
     "name": "test",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Test site.",
     "scripts": {
         "build": "ops-frontier-docusaurus build --out-dir $(pwd)/build",
@@ -16,7 +16,7 @@
         }
     },
     "dependencies": {
-        "@ops-frontier/docusaurus": "^0.0.7",
+        "@ops-frontier/docusaurus": "^0.0.8",
         "json-schema-to-ts": "^3.1.1"
     }
 }
