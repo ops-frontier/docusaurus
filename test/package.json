@@ -16,7 +16,7 @@
         }
     },
     "dependencies": {
-        "@ops-frontier/ops-frontier-docusaurus": "^0.0.1",
+        "@ops-frontier/docusaurus": "^0.0.3",
         "json-schema-to-ts": "^3.1.1"
     }
 }
