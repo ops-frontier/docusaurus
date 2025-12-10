@@ -1,5 +1,12 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.7
+
+### Patch Changes
+
+-   673e794: fix error
+-   faf884d: integrate workflow
+
 ## 0.0.7-rc.1
 
 ### Patch Changes
