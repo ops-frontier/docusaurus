@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.6-rc.1
+
+### Patch Changes
+
+-   delete comments
+
 ## 0.0.6-rc.0
 
 ### Patch Changes
