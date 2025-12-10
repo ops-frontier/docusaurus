@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.6-rc.6
+
+### Patch Changes
+
+-   test 5
+
 ## 0.0.6-rc.5
 
 ### Patch Changes
