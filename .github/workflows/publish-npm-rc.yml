@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write # for oidc trusted publishers
   pull-requests: write
   # packages: write  <- GitHub Packages は使用しないのでコメントアウト
 
@@ -35,5 +36,3 @@ jobs:
         run: |
           npm install --no-audit --no-fund --ci
           npm publish --tag rc --workspace=packages/docusaurus
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # secrets名を変更
