@@ -35,3 +35,11 @@ npx add-change
 ```
 npx push-pr
 ```
+
+## 5. end
+
+以下のコマンドでプルリクエストを終了して、マージする。
+
+```
+npx end-pr
+```
