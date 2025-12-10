@@ -30,7 +30,11 @@ jobs:
       - name: Get version to be released
         id: get-version
         run: node -e "console.log('version=' + require('./package.json').version)" >> "$GITHUB_OUTPUT"
-      - name: npm パッケージを公開
+
+      - name: Upgrade npm CLI for Trusted Publishing
+        run: npm install -g npm@latest
+
+      - name: Publish npm package
         run: |
           npm install --no-audit --no-fund --ci
           npm publish --workspace=packages/docusaurus
