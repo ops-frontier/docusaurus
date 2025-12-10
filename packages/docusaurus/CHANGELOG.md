@@ -1,5 +1,59 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.6
+
+### Patch Changes
+
+-   6bb581b: test 3
+-   7f3bc13: degub workflow
+-   e26d430: test 4
+-   a198a91: delete comments
+-   ea5b1c7: test 5
+-   059b01d: test2
+-   f346ee7: test 5
+
+## 0.0.6-rc.6
+
+### Patch Changes
+
+-   test 5
+
+## 0.0.6-rc.5
+
+### Patch Changes
+
+-   test 5
+
+## 0.0.6-rc.4
+
+### Patch Changes
+
+-   test 4
+
+## 0.0.6-rc.3
+
+### Patch Changes
+
+-   test 3
+
+## 0.0.6-rc.2
+
+### Patch Changes
+
+-   test2
+
+## 0.0.6-rc.1
+
+### Patch Changes
+
+-   delete comments
+
+## 0.0.6-rc.0
+
+### Patch Changes
+
+-   degub workflow
+
 ## 0.0.5
 
 ### Patch Changes

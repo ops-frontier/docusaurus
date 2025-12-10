@@ -1,7 +1,7 @@
 name: Publish RC for Pull Request
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize]
 
 permissions:
@@ -30,6 +30,9 @@ jobs:
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
           scope: '@ops-frontier'
+
+      - name: Upgrade npm CLI for Trusted Publishing
+        run: npm install -g npm@latest
 
       - name: Publish npm package
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}

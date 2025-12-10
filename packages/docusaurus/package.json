@@ -1,12 +1,17 @@
 {
     "name": "@ops-frontier/docusaurus",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "private": false,
     "publishConfig": {
         "access": "public"
     },
     "author": "Mitsuru Nakakawaji <mitsuru@procube.jp>",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ops-frontier/docusaurus.git",
+        "directory": "packages/docusaurus"
+    },
     "scripts": {
         "start": "docusaurus start",
         "build": "docusaurus build",
