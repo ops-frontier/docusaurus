@@ -31,11 +31,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # scope: '@ops-frontier'
 
-      - name: Debug Step (Check OIDC Token)
-        id: print-token
-        run: |
-          cat ~/.npmrc
-
       - name: Publish npm package
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}
         run: |
