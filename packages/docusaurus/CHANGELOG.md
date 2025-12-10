@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.8-rc.0
+
+### Patch Changes
+
+-   publish when pull request
+
 ## 0.0.7
 
 ### Patch Changes
