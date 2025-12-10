@@ -1,5 +1,18 @@
 # test
 
+## 1.0.6
+
+### Patch Changes
+
+-   Updated dependencies [6bb581b]
+-   Updated dependencies [7f3bc13]
+-   Updated dependencies [e26d430]
+-   Updated dependencies [a198a91]
+-   Updated dependencies [ea5b1c7]
+-   Updated dependencies [059b01d]
+-   Updated dependencies [f346ee7]
+    -   @ops-frontier/docusaurus@0.0.6
+
 ## 1.0.6-rc.0
 
 ### Patch Changes
