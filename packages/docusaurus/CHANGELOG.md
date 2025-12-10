@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.7-rc.0
+
+### Patch Changes
+
+-   integrate workflow
+
 ## 0.0.6
 
 ### Patch Changes
