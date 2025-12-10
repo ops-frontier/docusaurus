@@ -1,5 +1,13 @@
 # test
 
+## 1.0.5
+
+### Patch Changes
+
+-   Updated dependencies [f07ef72]
+-   Updated dependencies [6ba411d]
+    -   @ops-frontier/docusaurus@0.0.5
+
 ## 1.0.5-rc.0
 
 ### Patch Changes

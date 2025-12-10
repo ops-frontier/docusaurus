@@ -1,5 +1,12 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.5
+
+### Patch Changes
+
+-   f07ef72: fix actions error
+-   6ba411d: Fix push error
+
 ## 0.0.5-rc.1
 
 ### Patch Changes
