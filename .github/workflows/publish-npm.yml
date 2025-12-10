@@ -19,6 +19,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check if changeset is in prerelease mode
+        id: check-in-pre
+        run: echo "pre=$(test -r .changeset/pre.json; echo $?)"  >> "$GITHUB_OUTPUT"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,5 +36,24 @@ jobs:
 
       - name: Publish npm package
         run: |
+          # 1. pre.json の有無をチェックし、終了コードを変数に格納
+          # 0: 存在する (RCモード) / 1: 存在しない (正規モード)
+          PRE_EXISTS=$(test -r .changeset/pre.json; echo $?)
+          
+          # 2. pre.json の存在に応じて、--tag の値を決定
+          # 存在する場合 (0): --tag rc を使用
+          # 存在しない場合 (1): 何も設定しない（npmがデフォルトの --tag latest を使用）
+          if [ "$PRE_EXISTS" -eq 0 ]; then
+            TAG_OPTION="--tag rc"
+            echo "Pre-release mode detected. Publishing with tag: rc"
+          else
+            TAG_OPTION=""
+            echo "Stable release mode detected. Publishing with tag: latest (default)"
+          fi
+          
+          # 3. 決定した変数を使用して npm publish を実行
           npm install --no-audit --no-fund --ci
-          npm publish --workspace=packages/docusaurus
+          
+          # 💡 TAG_OPTION をコマンドに動的に埋め込む
+          npm publish $TAG_OPTION --workspace=packages/docusaurus
+          

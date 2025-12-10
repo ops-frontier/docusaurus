@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.7-rc.1
+
+### Patch Changes
+
+-   fix error
+
 ## 0.0.7-rc.0
 
 ### Patch Changes
