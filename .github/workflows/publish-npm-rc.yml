@@ -31,6 +31,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@ops-frontier'
 
+      - name: Upgrade npm CLI for Trusted Publishing
+        run: npm install -g npm@latest
+
       - name: Publish npm package
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}
         run: |
