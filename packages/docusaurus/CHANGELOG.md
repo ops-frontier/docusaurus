@@ -1,5 +1,17 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.4
+
+### Patch Changes
+
+-   5790e5d: Fix vulneravilities
+
+## 0.0.4-rc.0
+
+### Patch Changes
+
+-   Fix vulneravilities
+
 ## 0.0.3
 
 ### Patch Changes
