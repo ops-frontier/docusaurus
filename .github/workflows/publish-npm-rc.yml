@@ -29,7 +29,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-          # scope: '@ops-frontier'
+          scope: '@ops-frontier'
 
       - name: Publish npm package
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}
