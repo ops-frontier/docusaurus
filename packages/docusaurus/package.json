@@ -1,6 +1,6 @@
 {
     "name": "@ops-frontier/docusaurus",
-    "version": "0.0.5",
+    "version": "0.0.6-rc.0",
     "private": false,
     "publishConfig": {
         "access": "public"

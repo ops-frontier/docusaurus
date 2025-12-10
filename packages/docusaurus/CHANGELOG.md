@@ -1,5 +1,11 @@
 # @ops-frontier/ops-frontier-docusaurus
 
+## 0.0.6-rc.0
+
+### Patch Changes
+
+-   degub workflow
+
 ## 0.0.5
 
 ### Patch Changes
